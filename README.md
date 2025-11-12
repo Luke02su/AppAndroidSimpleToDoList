@@ -1,5 +1,11 @@
 # 📝 Simple ToDo List App
 
+[![Kotlin](https://img.shields.io/badge/Linguagem-Kotlin-orange?logo=kotlin)](https://kotlinlang.org/)  
+[![Android Studio](https://img.shields.io/badge/IDE-Android_Studio-brightgreen?logo=android-studio)](https://developer.android.com/studio)  
+[![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)  
+
+---
+
 A minimalist **ToDo List** application built with **Kotlin** and **Jetpack Compose**, designed for simplicity, clarity, and persistence.  
 It allows users to **add, edit, mark, and remove** tasks — and all data is **saved locally** using `SharedPreferences`, so nothing is lost when the app closes.
 
