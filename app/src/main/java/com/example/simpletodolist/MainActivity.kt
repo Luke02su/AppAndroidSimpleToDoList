@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.gestures.draggable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -133,6 +134,8 @@ fun ToDoListScreen(
 fun ToDoItem(task: Task, onRemove: () -> Unit, onEdit: () -> Unit) {
     var done by rememberSaveable { mutableStateOf(false) }
 
+    val context = LocalContext.current
+
     Card(
         modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp),
         colors = CardDefaults.cardColors(
@@ -150,6 +153,7 @@ fun ToDoItem(task: Task, onRemove: () -> Unit, onEdit: () -> Unit) {
                 if (task.description.isNotBlank())
                     Text(task.description, fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
+
             IconButton(onClick = onEdit) { Icon(Icons.Default.Edit, contentDescription = "Editar") }
             IconButton(onClick = onRemove) { Icon(Icons.Default.Delete, contentDescription = "Remover") }
         }
