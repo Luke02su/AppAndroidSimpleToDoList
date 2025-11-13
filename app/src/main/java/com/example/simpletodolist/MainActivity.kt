@@ -11,6 +11,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -43,6 +44,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+// Navigation beetwen of screens of tasks e details
 @Composable
 fun ToDoApp() {
     val navController = rememberNavController()
@@ -77,6 +79,7 @@ fun ToDoApp() {
     }
 }
 
+// Main screen with list of tasks
 @Composable
 fun ToDoListScreen(
     tasks: List<Task>,
@@ -86,12 +89,12 @@ fun ToDoListScreen(
     var title by rememberSaveable { mutableStateOf("") }
     var description by rememberSaveable { mutableStateOf("") }
 
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+    Column(modifier = Modifier.fillMaxSize().padding(16.dp).padding(top = 40.dp)) {
         Text("Simple To Do List", fontSize = 26.sp, textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth())
         Spacer(Modifier.height(16.dp))
 
-        OutlinedTextField(value = title, onValueChange = { title = it }, label = { Text("Título") }, modifier = Modifier.fillMaxWidth())
-        OutlinedTextField(value = description, onValueChange = { description = it }, label = { Text("Descrição") }, modifier = Modifier.fillMaxWidth().padding(top = 8.dp))
+        OutlinedTextField(value = title, onValueChange = { title = it }, label = { Text("Title of task") }, modifier = Modifier.fillMaxWidth(), singleLine = true)
+        OutlinedTextField(value = description, onValueChange = { description = it }, label = { Text("Description of task") }, modifier = Modifier.fillMaxWidth().padding(top = 8.dp))
 
         Button(
             onClick = {
@@ -102,7 +105,7 @@ fun ToDoListScreen(
                 }
             },
             modifier = Modifier.padding(top = 8.dp).align(Alignment.End)
-        ) { Text("+ Adicionar") }
+        ) { Text("+ Add") }
 
         Spacer(Modifier.height(12.dp))
 
@@ -114,19 +117,20 @@ fun ToDoListScreen(
                     onRemove = {
                         onTasksChange(tasks.toMutableList().apply { removeAt(index) })
                     },
-                    onClick = { onTaskClick(index) }
+                    onEdit = { onTaskClick(index) }
                 )
             }
         }
     }
 }
 
+// Card show tasks
 @Composable
-fun ToDoItem(task: Task, onRemove: () -> Unit, onClick: () -> Unit) {
+fun ToDoItem(task: Task, onRemove: () -> Unit, onEdit: () -> Unit) {
     var done by rememberSaveable { mutableStateOf(false) }
 
     Card(
-        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp).clickable { onClick() },
+        modifier = Modifier.fillMaxWidth().padding(vertical = 4.dp).clickable { onEdit() },
         colors = CardDefaults.cardColors(
             containerColor = if (done) MaterialTheme.colorScheme.surfaceVariant else MaterialTheme.colorScheme.background
         ),
@@ -142,11 +146,13 @@ fun ToDoItem(task: Task, onRemove: () -> Unit, onClick: () -> Unit) {
                 if (task.description.isNotBlank())
                     Text(task.description, fontSize = 12.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
+            IconButton(onClick = onEdit) { Icon(Icons.Default.Edit, contentDescription = "Editar") }
             IconButton(onClick = onRemove) { Icon(Icons.Default.Delete, contentDescription = "Remover") }
         }
     }
 }
 
+// Details of tasks
 @Composable
 fun TaskDetailScreen(task: Task, onSave: (Task) -> Unit, onBack: () -> Unit) {
     var title by rememberSaveable { mutableStateOf(task.title) }
@@ -157,20 +163,20 @@ fun TaskDetailScreen(task: Task, onSave: (Task) -> Unit, onBack: () -> Unit) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Text("Editar Tarefa", style = MaterialTheme.typography.headlineSmall)
+        Text("Edit Task", style = MaterialTheme.typography.headlineSmall)
         Spacer(Modifier.height(16.dp))
-        OutlinedTextField(value = title, onValueChange = { title = it }, label = { Text("Título") }, modifier = Modifier.fillMaxWidth())
-        OutlinedTextField(value = description, onValueChange = { description = it }, label = { Text("Descrição") }, modifier = Modifier.fillMaxWidth().padding(top = 8.dp))
+        OutlinedTextField(value = title, onValueChange = { title = it }, label = { Text("Title of task") }, modifier = Modifier.fillMaxWidth(), singleLine = true)
+        OutlinedTextField(value = description, onValueChange = { description = it }, label = { Text("Description of task") }, modifier = Modifier.fillMaxWidth().padding(top = 8.dp))
         Spacer(Modifier.height(16.dp))
         Row {
-            Button(onClick = { onSave(Task(title, description)) }) { Text("Salvar") }
+            Button(onClick = { onSave(Task(title, description)) }) { Text("Save") }
             Spacer(Modifier.width(8.dp))
-            OutlinedButton(onClick = onBack) { Text("Voltar") }
+            OutlinedButton(onClick = onBack) { Text("Return") }
         }
     }
 }
 
-// Save tasks
+// Save tasks to persistance
 fun saveTasks(context: Context, tasks: List<Task>) {
     val jsonArray = JSONArray()
     tasks.forEach {
@@ -185,6 +191,7 @@ fun saveTasks(context: Context, tasks: List<Task>) {
         .apply()
 }
 
+// Load tasks to persistence
 fun loadTasks(context: Context): List<Task> {
     val prefs = context.getSharedPreferences("tasks", Context.MODE_PRIVATE)
     val jsonString = prefs.getString("data", "[]") ?: "[]"
