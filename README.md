@@ -22,7 +22,7 @@ It allows users to **add, edit, mark, and remove** tasks — and all data is **s
 
 -----
 
-## 📱 Print of Screen 9Old Version)
+## 📱 Print of Screen (Old Version)
 
 <p align="center">
    <img width="300" height="600" alt="Tela 1" src="https://github.com/user-attachments/assets/9e10e2b2-3732-4b53-8294-7be8cba353bd" />
