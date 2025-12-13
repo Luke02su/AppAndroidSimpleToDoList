@@ -22,13 +22,17 @@ It allows users to **add, edit, mark, and remove** tasks — and all data is **s
 
 -----
 
-## 📱 Print of Screen
+## 📱 Print of Screen 9Old Version)
 
-\<p align="center"\>
-\<img width="300" height="600" alt="Tela 1" src="[https://github.com/user-attachments/assets/9e10e2b2-3732-4b53-8294-7be8cba353bd](https://github.com/user-attachments/assets/9e10e2b2-3732-4b53-8294-7be8cba353bd)" /\>
-\<img width="300" height="600" alt="Tela 2" src="[https://github.com/user-attachments/assets/5c8595df-6f2a-4252-a798-83876c60e453](https://github.com/user-attachments/assets/5c8595df-6f2a-4252-a798-83876c60e453)" /\>
-\<img width="300" height="600" alt="Tela 3" src="[https://github.com/user-attachments/assets/78dddeea-fe81-4854-a1d5-b65a5b74c8ed](https://github.com/user-attachments/assets/78dddeea-fe81-4854-a1d5-b65a5b74c8ed)" /\>
-\</p\>
+<p align="center">
+
+   <img width="300" height="600" alt="Tela 1" src="https://github.com/user-attachments/assets/9e10e2b2-3732-4b53-8294-7be8cba353bd" />
+
+    <img width="300" height="600" alt="Tela 2" src="https://github.com/user-attachments/assets/5c8595df-6f2a-4252-a798-83876c60e453" />
+
+   <img width="300" height="600" alt="Tela 3" src="https://github.com/user-attachments/assets/78dddeea-fe81-4854-a1d5-b65a5b74c8ed" />
+
+</p>
 
 -----
 
