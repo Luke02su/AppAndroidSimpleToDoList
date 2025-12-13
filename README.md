@@ -37,7 +37,6 @@ It allows users to **add, edit, mark, and remove** tasks — and all data is **s
 <p align="center">
    <img width="300" height="600" alt="Tela 1" src="https://github.com/user-attachments/assets/84671f7b-4c1f-463e-bc62-ee7612e66d04" />
    <img width="300" height="600" alt="Tela 2" src="https://github.com/user-attachments/assets/65135d33-36ac-4c06-a884-5cb72c646662" />
-   <img width="300" height="600" alt="Tela 3" src="https://github.com/user-attachments/assets/78dddeea-fe81-4854-a1d5-b65a5b74c8ed" />
 </p>
 />
 
