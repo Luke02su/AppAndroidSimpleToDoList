@@ -1,8 +1,8 @@
 ## 📝 Simple ToDo List App (Updated)
 
-[](https://kotlinlang.org/)
-[](https://developer.android.com/studio)
-[](https://www.google.com/search?q=LICENSE)
+[![Kotlin](https://img.shields.io/badge/Linguagem-Kotlin-orange?logo=kotlin)](https://kotlinlang.org/)  
+[![Android Studio](https://img.shields.io/badge/IDE-Android_Studio-brightgreen?logo=android-studio)](https://developer.android.com/studio)  
+[![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)  
 
 -----
 
