@@ -53,6 +53,23 @@ dependencies {
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.compose.foundation)
+
+    // 1. ViewModel para uso em Compose (Necessário para ThemeViewModel)
+    // Resolve: Unresolved reference 'viewModels' e 'viewModel()'
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.3")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.3")
+
+    // 2. Navigation Compose (Já deve existir, mas garanta)
+    // Resolve: Unresolved reference 'rememberNavController'
+    implementation("androidx.navigation:navigation-compose:2.7.7")
+
+    // 3. Ícones (Resolve WbSunny, NightsStay, Schedule)
+    implementation("androidx.compose.material:material-icons-extended:1.6.8")
+
+    // 4. Notificações (Resolve NotificationCompat e o restante da API de notificação)
+    // Se você estiver usando o pacote core-ktx, o NotificationCompat pode estar aqui, mas é bom garantir:
+    implementation("androidx.core:core:1.13.1")
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
